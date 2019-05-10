@@ -29,7 +29,6 @@ files:
     destination: /home/ec2-user/ruby-on-rails/db
   - source: /test/
     destination: /home/ec2-user/ruby-on-rails/test
- 
  hooks:
   BeforeInstall:
     - location: scripts/build.sh
