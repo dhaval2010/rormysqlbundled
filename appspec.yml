@@ -23,22 +23,12 @@ files:
     destination: /home/ec2-user/ruby-on-rails/vendor
   - source: /public/
     destination: /home/ec2-user/ruby-on-rails/public
-  - source: /bin/
-    destination: /home/ec2-user/ruby-on-rails/bin
-  - source: /db/
-    destination: /home/ec2-user/ruby-on-rails/db
-  - source: /test/
-    destination: /home/ec2-user/ruby-on-rails/test
- hooks:
-  BeforeInstall:
-    - location: scripts/build.sh
+hooks:
+  AfterInstall:
+    - location: scripts/install_dependencies
       timeout: 1800
       runas: root
-  Install:
-    - location: scripts/build.sh
-      timeout: 1800
-      runas: root      
-  AfterInstall:
-    - location: scripts/build.sh
-      timeout: 1800
+  ApplicationStop:
+    - location: scripts/stop_server
+      timeout: 300
       runas: root
