@@ -31,6 +31,14 @@ files:
     destination: /home/ec2-user/ruby-on-rails/test
  
  hooks:
+  BeforeInstall:
+    - location: scripts/build.sh
+      timeout: 1800
+      runas: root
+  Install:
+    - location: scripts/build.sh
+      timeout: 1800
+      runas: root      
   AfterInstall:
     - location: scripts/build.sh
       timeout: 1800
